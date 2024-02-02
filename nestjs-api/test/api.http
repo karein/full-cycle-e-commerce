@@ -1,0 +1,50 @@
+GET http://localhost:3000/products
+
+### 
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+  "name": "Product 1",
+  "description": "Product 1 description",
+  "image_url": "https://via.placeholder.com/150",
+  "price": 100
+}
+
+###
+GET http://localhost:3000/orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiam9obiIsImlhdCI6MTcwNjg4MjQ3MiwiZXhwIjoxNzA2ODgyNTMyfQ.Qmdi9WXwexE_3QiU1E8iOa3gldCe5H1wRgb1TK02jcU
+
+###
+GET http://localhost:3000/orders/0500bca2-5079-456a-8bf5-e0ddec309e46
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiam9obiIsImlhdCI6MTcwNjg4MjU3NiwiZXhwIjoxNzA2ODgyNjM2fQ.rk4AZheH4JehaDfAduv0Ez_laR9WB_F00cKmh0o3wQc
+
+###
+POST http://localhost:3000/orders
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiam9obiIsImlhdCI6MTcwNjg5MjQ1NSwiZXhwIjoxNzA2ODkyNTE1fQ.JFErfaTFQ3ZVvXVhyqxsrv21gsfqdPxE7Pzht7w_Mzc
+
+{
+  "items":[
+    {
+      "product_id": "ab-cd-ef",
+      "quantity": 1
+    },
+    {
+      "product_id": "gh-ij-kl",
+      "quantity": 1
+    }
+  ],
+  "card_hash": "123"
+}
+
+
+### 
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "username":  "john",
+  "password": "john"
+}
+
