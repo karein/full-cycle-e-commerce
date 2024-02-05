@@ -13,7 +13,7 @@ dev full cycle vs dev full stack
 
 INICIAR PROJETO GO
 
-go mod init github.com/<repositorio_github>
+go mod init github.com/<repositório_github>
 
 Pastas - internal: tudo que é interno do projeto e não vai ser compartilhado
 
@@ -66,8 +66,9 @@ comandos:
 - docker compose up
 - docker compose exec <container_name> bash
   - docker compose exec db bash
-- mysql -uroot -proot
-  logar com o cli
+- mysql -u<user> -p<password>
+  - mysql -uroot -proot
+    logar com o cli
 - show databases
 - npm install class-validator class-transformer
 - npm install @nestjs/jwt
@@ -116,3 +117,45 @@ Criar/Gerenciar filas
 8. No campo `Routing key` add uma rota/nome do evento
 
 - por Ex: OrderCreated
+
+# Aula 3
+
+Tecnologias utilizadas
+
+- TypeScript/JavaScript
+- Next.js e React.js
+- React Server Components
+- Material UI
+
+O que é o Next.js
+
+A ideia do next.js é permitir a criação de aplicações WEB usando React.js com renderização do lado do servidor, ajudando a resolver problemas antes enfrentados com aplicações Single Page Application.
+
+Com o next do lado do servidor, é possível trabalhar com logicas do lado do servidor, como acesso direto ao banco de dados e até criação de API Rest.
+
+React Server Components
+
+Problemas do Server Side Rendering padrão
+
+- O servidor precisa recarregar sempre toda a página, pedaços não são cacheados.
+- Se precisar de algum reprocessamento da página. precisa regerá-la inteira no servidor.
+- Se usar lib, como formatação de datas e outras coisas, tudo fica no bundle JS do cliente, ou seja, temos um javascript maior para carregar no front-end.
+- Enfim, temos problemas de flexibilidade e otimização de carregamento das páginas e start do projeto.
+
+Server Components
+
+- Bundle JS menor
+- Carregamento inicial mais rápido
+- Cacheamento em nível de componentes
+- Chamadas externas em paralelo (Suspense)
+
+Comandos
+
+- npx create-next-app --typescript
+- npm install @mui/material-nextjs @emotion/cache
+- npm install @mui/material
+- npm install @emotion/react @emotion/style
+- npm install @mui/icons-material
+
+Use Client -> começa no servidor e vai pré-renderizado para o browser.  
+Várias funções só são possíveis usar em components clients, como por exemplo: useRouter e useSearchParams;
