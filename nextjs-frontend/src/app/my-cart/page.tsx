@@ -25,7 +25,7 @@ const products = [
     name: "Camisa",
     description: "Camisa Branca",
     price: 100,
-    image_url: "http://source.unsplash.com/random?product",
+    image_url: "https://source.unsplash.com/random?product",
     category_id: "1"
   },
   {
@@ -33,7 +33,7 @@ const products = [
     name: "Caneta",
     description: "Caneta Azul",
     price: 2.50,
-    image_url: "http://source.unsplash.com/random?product",
+    image_url: "https://source.unsplash.com/random?product",
     category_id: "2"
   },
 ];

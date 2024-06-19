@@ -24,7 +24,7 @@ const orders = [
           name: "Camisa",
           description: "Camisa Branca",
           price: 180,
-          image_url: "http://source.unsplash.com/random?product",
+          image_url: "https://source.unsplash.com/random?product",
           category_id: "1"
         },
         quantity: 2,
@@ -37,7 +37,7 @@ const orders = [
           name: "Calça",
           description: "Calça jeans",
           price: 280,
-          image_url: "http://source.unsplash.com/random?product",
+          image_url: "https://source.unsplash.com/random?product",
           category_id: "2"
         },
         quantity: 2,
@@ -48,7 +48,7 @@ const orders = [
   }
 ]
 
-export async function MyOrdersListPage() {
+async function MyOrdersListPage() {
   return (
     <Box>
       <Typography variant="h4">Meus Pedidos</Typography>

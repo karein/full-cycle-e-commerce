@@ -11,7 +11,7 @@ const product: Product = {
   name: "Camisa",
   description: "Camisa branca",
   price: 100,
-  image_url: "http://source.unsplash.com/random?product",
+  image_url: "https://source.unsplash.com/random?product",
   category_id: "1"
 }
 

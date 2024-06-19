@@ -19,7 +19,7 @@ const products: Product[] = [
     name: "Produto 1",
     description: "Descrição produto 1",
     price: 100,
-    image_url: "http://source.unsplash.com/random?product",
+    image_url: "https://source.unsplash.com/random?product",
     category_id: "1",
   },
   {
@@ -27,7 +27,7 @@ const products: Product[] = [
     name: "Produto 2",
     description: "Descrição produto 2",
     price: 200,
-    image_url: "http://source.unsplash.com/random?product",
+    image_url: "https://images.unsplash.com/photo-1602143407151-7111542de6e8",
     category_id: "2",
   },
   {
@@ -35,12 +35,12 @@ const products: Product[] = [
     name: "Produto 3",
     description: "Descrição produto 3",
     price: 300,
-    image_url: "http://source.unsplash.com/random?product",
+    image_url: "https://source.unsplash.com/random?product",
     category_id: "3",
   },
 ]
 
-export function ListProductsPage() {
+function ListProductsPage() {
   return (
     <Grid2 container spacing={2}>
       {products.length === 0 && (
@@ -99,3 +99,5 @@ export function ListProductsPage() {
     </Grid2>
   )
 }
+
+export default ListProductsPage;

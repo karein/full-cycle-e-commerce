@@ -25,7 +25,7 @@ const order: Order = {
         name: "Camisa",
         description: "Camisa Branca",
         price: 180,
-        image_url: "http://source.unsplash.com/random?product",
+        image_url: "https://source.unsplash.com/random?product",
         category_id: "1"
       },
       quantity: 2,
@@ -38,7 +38,7 @@ const order: Order = {
         name: "Calça",
         description: "Calça jeans",
         price: 280,
-        image_url: "http://source.unsplash.com/random?product",
+        image_url: "https://source.unsplash.com/random?product",
         category_id: "2"
       },
       quantity: 2,
@@ -116,3 +116,5 @@ async function CheckoutSuccessPage({
     </Box>
   );
 }
+
+export default CheckoutSuccessPage;
