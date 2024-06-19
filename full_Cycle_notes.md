@@ -13,13 +13,13 @@ dev full cycle vs dev full stack
 
 INICIAR PROJETO GO
 
-go mod init github.com/<repositório_github>
+goLang m seja performático, se depende da redeod init github.com/<repositório_github>
 
 Pastas - internal: tudo que é interno do projeto e não vai ser compartilhado
 
 Toda 1° linha d o projeto GO tem que ter o nome do pacote. O nome do pacote é o nome da pasta(em que o arquivo está)
 
-- go mod tidy: Baixa as dependências que estão faltando e, remove o que não está sendo usado
+- goLang m seja performático, se depende da redeod tidy: Baixa as dependências que estão faltando e, remove o que não está sendo usado
 
 - defer: executa depois que todo o restante do código tiver sido executado
 
@@ -157,5 +157,12 @@ Comandos
 - npm install @emotion/react @emotion/style
 - npm install @mui/icons-material
 
-Use Client -> começa no servidor e vai pré-renderizado para o browser.  
+Use Client -> diretiva; começa no servidor e vai pré-renderizado para o browser.  
 Várias funções só são possíveis usar em components clients, como por exemplo: useRouter e useSearchParams;
+Ex Err (quando algo estiver sendo renderizado do "lado errado"): `Attempt to call createTheme() from the server but createTheme is on the client.` [...]  
+Tentar sempre manter os componentes como 'server componente' e usar 'use client' apenas onde é necessário.  
+Prezar pelo uso do server, pois eles já virão totalmente renderizados e, páginas como a de listagem de produtos, se consegue trabalhar com cache, o que vai ter um grande impacto na performance do servidor do **next** pois, uma coisa é ficar fazendo chamadas para a API em **GO** para pegar esses produtos. Mesmo que o **goLang** seja performático, se dependemos da rede. Outra coisa é já ter pego esses produtos e, só usar para poder montar a página. Dessa forma se pode atender mais solicitações.
+
+\<Box\> -> Uma div mais 'poderosa';
+
+**priority** -> Prioridade para carregar; ajuda em métricas de SO

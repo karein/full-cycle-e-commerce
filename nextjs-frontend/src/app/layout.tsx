@@ -31,7 +31,7 @@ export default function RootLayout({
                   flexGrow: 1,
                   bgcolor: "background.default",
                   mt: ["122px", "135px", "146px"],
-                  p: 3,
+                  p: 3, // trabalha com escala padrão de 8px; logo o padding final vai ser de 24px
                 }}
               >
                 {children}

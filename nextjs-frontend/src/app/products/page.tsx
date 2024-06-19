@@ -1,5 +1,3 @@
-import { Product } from "@/models"
-import Image from "next/legacy/image"
 import {
   Box,
   Button,
@@ -8,11 +6,39 @@ import {
   CardContent,
   Typography,
 } from "@mui/material"
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2"
 import Link from "next/link"
+import Image from "next/legacy/image"
 import { ShoppingCart } from "@mui/icons-material"
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2"
 
-const products: Product[] = []
+import { Product } from "@/models"
+
+const products: Product[] = [
+  {
+    id: "1",
+    name: "Produto 1",
+    description: "Descrição produto 1",
+    price: 100,
+    image_url: "http://source.unsplash.com/random?product",
+    category_id: "1",
+  },
+  {
+    id: "2",
+    name: "Produto 2",
+    description: "Descrição produto 2",
+    price: 200,
+    image_url: "http://source.unsplash.com/random?product",
+    category_id: "2",
+  },
+  {
+    id: "3",
+    name: "Produto 3",
+    description: "Descrição produto 3",
+    price: 300,
+    image_url: "http://source.unsplash.com/random?product",
+    category_id: "3",
+  },
+]
 
 export function ListProductsPage() {
   return (
@@ -60,11 +86,11 @@ export function ListProductsPage() {
                 href={`/products/${product.id}`}
                 style={{ textDecoration: "none" }}
               >
-                <Box>
-                  <Button size="small" startIcon={<ShoppingCart />}>
-                    Compar
-                  </Button>
-                </Box>
+                {/* <Box> */}
+                <Button size="small" startIcon={<ShoppingCart />}>
+                  Compar
+                </Button>
+                {/* </Box> */}
               </Link>
             </CardActions>
           </Card>

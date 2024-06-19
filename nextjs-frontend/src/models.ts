@@ -4,7 +4,7 @@ export type Category = {
 }
 
 export type Product = {
-  id: number
+  id: string
   name: string
   description: string
   image_url: string
@@ -19,7 +19,7 @@ export enum OrderStatus {
 }
 
 export type Order = {
-  id: number
+  id: string
   total: number
   status: OrderStatus
   items: OrderItem[]
