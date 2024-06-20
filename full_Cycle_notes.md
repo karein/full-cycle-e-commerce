@@ -166,3 +166,89 @@ Prezar pelo uso do server, pois eles já virão totalmente renderizados e, pági
 \<Box\> -> Uma div mais 'poderosa';
 
 **priority** -> Prioridade para carregar; ajuda em métricas de SO
+
+# Aula 4
+
+Arquitetura geral do sistema
+
+                                                   MySQL
+                                                     ⬆
+    |        Next.js        |            |        Nest.js       | <-consome mensagens<- |   RabbitMQ  |
+    | Backend for Front-end |  <-http->  |       (Backend)      |                       |             |
+    |     Front da loja     |            | API - Ordem de pedido| ->publica mensagens-> | (Messaging) |
+                ⬆                                                                         ⬇         ⬆
+               http                                                             consome mensagens  publica mensagens
+                ⬇                                                                         ⬇         ⬆
+        |    Golang     |                                                             |      Golang      |
+        |   (backend)   |                                                             |     (backend)    |
+        |API do Catálogo|                                                             | API - Pagamentos |
+
+Se a aplicação **Go** foi clonada/replicada na máquina, tem um volume configurado mo mySql. Rodar os seguintes comandos
+
+- Para destruir o banco de dados:
+  > sudo rm -rf ./.docker/mysql
+- Para destruir o container:
+
+  > docker compose down
+
+- Next  
+  Um componente server pode devolver um `Promise` pois, está devolvendo uma 'promessa' com o elemento que vai ser renderizado.
+
+  Ao utilizar o fetch para fazer requisições, o next verifica se tem cache e se está válido. Assim otimiza a aplicação e, caso o serviço da requisição fique indisponível, ainda vai mostrar os produtos. Esse é o comportamento padrão do fetch. Caso seja utilizada outra lib para requisições ou uma que não utilize fetch por baixo dos panos, esse comportamento não vai acontecer.  
+  Para o cache não ficar permanente -já que possivelmente a lista de produtos pode mudar-, existe a possibilidade de revalidar o cache por um período de tempo:
+
+  ```typescript
+  const response = await fetch(`http://localhost:8080/product`, {
+    next: {
+      revalidate: 10, //cache vale durante 10 segundos
+    },
+  });
+  ```
+
+  Toda página do **Next** se recebe um params e um searchParams
+
+  - params: parâmetros de rotas
+  - searchParams: string passadas na URL. (`?key=value`)
+
+  Se a chamada http for feita em um arquivo 'client', ela vai ser feita no browse. Se quer diminuir ao máximo js sendo executado no browser. Se for feita fora de um 'client' a chamada será executada no servidor.
+
+# Comandos
+
+- GoApi
+
+  - Subir container (run project)
+    > docker compose up
+  - Entrar no container MySql
+    > docker compose exec mysql bash
+  - Logar no CLI
+    > root@<user?>:/# mysql -uroot -proot
+  - Ver se tem banco de dados:
+    > show databases;
+  - Usar bd:
+
+    > use <nome_banco>;
+
+    _ex: use imersao17;_
+
+  - Select:
+    > select \* from categories;  
+    > select \* from products;
+  - Rodar Go: (run project)
+    > go run ./cmd/catalog/main.go
+
+  **OBS:** Esse SQL(db.sql) foi só executado essa vez, se parar o container, ele existir mas, estiver parado e iniciar ele novamente não vai executar as criações de tabelas novamente do db.sql. Para forçar ele a subir novamente(executar os creates!?) tem que ser feito a exclusão do volume. Ele só executa esse sql quando vê que a estrutura de pastas está sendo criada pela 1° vez.
+
+- Nest.js
+
+  - Subir container RabbitMQ (run project):
+    > docker compose up
+  - Rodar fixture para verificar se está OK:
+    > npm run fixture
+  - Rodar Nest (em outro terminal) (run project):
+    > npm run start:dev
+
+- Next.js
+  - Servir images (run project)
+    > npx serve -l 9000 images
+  - Rodar Next (run project)
+    > npm run dev

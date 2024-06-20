@@ -1,5 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  redirects: async () => {
+    return [
+      {
+        source: '/',
+        destination: '/products',
+        permanent: true
+      }
+    ]
+  },
+
   // informando para o next links de terceiros permitidos para acessar
   images: {
     remotePatterns: [
@@ -15,9 +25,13 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.unsplash.com'
       },
+      {
+        protocol: 'http',
+        hostname: 'localhost'
+      },
     ]
   }
-  
+
 };
 
 module.exports = nextConfig;

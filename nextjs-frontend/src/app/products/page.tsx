@@ -13,34 +13,43 @@ import Grid2 from "@mui/material/Unstable_Grid2/Grid2"
 
 import { Product } from "@/models"
 
-const products: Product[] = [
-  {
-    id: "1",
-    name: "Produto 1",
-    description: "Descrição produto 1",
-    price: 100,
-    image_url: "https://source.unsplash.com/random?product",
-    category_id: "1",
-  },
-  {
-    id: "2",
-    name: "Produto 2",
-    description: "Descrição produto 2",
-    price: 200,
-    image_url: "https://images.unsplash.com/photo-1602143407151-7111542de6e8",
-    category_id: "2",
-  },
-  {
-    id: "3",
-    name: "Produto 3",
-    description: "Descrição produto 3",
-    price: 300,
-    image_url: "https://source.unsplash.com/random?product",
-    category_id: "3",
-  },
-]
+async function getProducts({
+  search,
+  category_id
+}: {
+  search: string | undefined;
+  category_id: string | undefined;
+}): Promise<Product[]> {
+  let url = `${process.env.CATALOG_API_URL}/product`;
 
-function ListProductsPage() {
+  if (category_id) {
+    url += `/category/${category_id}`
+  }
+
+  // ao fazer essa chamada, next verifica se tem cache e se está válido. Assim otimiza a aplicação e, caso o serviço da requisição fique indisponível, ainda vai mostrar os produtos. Esse é o comportamento padrão do fetch. Caso seja utilizada outra lib para requisições ou que não utilize fetch por baixo dos panos, esse comportamento não vai acontecer.
+  const response = await fetch(url, {
+    next: {
+      revalidate: 10,
+    }
+  });
+  let data = await response.json();
+  data = !data ? [] : data;
+
+  if (search) {
+    return data.filter((product: Product) => {
+      return product.name.toLowerCase().includes(search.toLowerCase())
+    })
+  }
+
+  return data;
+}
+
+async function ListProductsPage({ searchParams }: { searchParams: { search?: string, category_id?: string } }) {
+  const search = searchParams.search;
+  const category_id = searchParams.category_id;
+
+  const products = await getProducts({ search, category_id });
+
   return (
     <Grid2 container spacing={2}>
       {products.length === 0 && (
