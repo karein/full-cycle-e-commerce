@@ -8,10 +8,11 @@ import {
   TableRow,
   Typography
 } from "@mui/material"
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2"
-import { CheckoutForm } from "./CheckoutForm"
 import { redirect } from "next/navigation"
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2"
+
 import { Total } from "@/components/Total"
+import { CheckoutForm } from "./CheckoutForm"
 
 const products = [
   {

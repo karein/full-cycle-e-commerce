@@ -11,44 +11,14 @@ import Image from "next/legacy/image"
 import { ShoppingCart } from "@mui/icons-material"
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2"
 
-import { Product } from "@/models"
+import { ProductService } from "@/services/product.service"
 
-async function getProducts({
-  search,
-  category_id
-}: {
-  search: string | undefined;
-  category_id: string | undefined;
-}): Promise<Product[]> {
-  let url = `${process.env.CATALOG_API_URL}/product`;
-
-  if (category_id) {
-    url += `/category/${category_id}`
-  }
-
-  // ao fazer essa chamada, next verifica se tem cache e se está válido. Assim otimiza a aplicação e, caso o serviço da requisição fique indisponível, ainda vai mostrar os produtos. Esse é o comportamento padrão do fetch. Caso seja utilizada outra lib para requisições ou que não utilize fetch por baixo dos panos, esse comportamento não vai acontecer.
-  const response = await fetch(url, {
-    next: {
-      revalidate: 10,
-    }
-  });
-  let data = await response.json();
-  data = !data ? [] : data;
-
-  if (search) {
-    return data.filter((product: Product) => {
-      return product.name.toLowerCase().includes(search.toLowerCase())
-    })
-  }
-
-  return data;
-}
 
 async function ListProductsPage({ searchParams }: { searchParams: { search?: string, category_id?: string } }) {
   const search = searchParams.search;
   const category_id = searchParams.category_id;
 
-  const products = await getProducts({ search, category_id });
+  const products = await new ProductService().getProducts({ search, category_id });
 
   return (
     <Grid2 container spacing={2}>
@@ -95,11 +65,9 @@ async function ListProductsPage({ searchParams }: { searchParams: { search?: str
                 href={`/products/${product.id}`}
                 style={{ textDecoration: "none" }}
               >
-                {/* <Box> */}
                 <Button size="small" startIcon={<ShoppingCart />}>
                   Compar
                 </Button>
-                {/* </Box> */}
               </Link>
             </CardActions>
           </Card>

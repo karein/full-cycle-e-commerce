@@ -9,15 +9,17 @@ import {
   ListItemText,
   Typography
 } from "@mui/material"
-// import { } from "../../server-actions/cart.action"
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2"
-import DeleteIcon from "@mui/icons-material/Delete"
+import React from "react"
 import Link from "next/link"
+import DeleteIcon from "@mui/icons-material/Delete"
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
+
 import { Total } from "@/components/Total"
+
 // import { } from "../../services/cart.service"
 // import { } from "../../services/product.service"
-import React from "react"
+// import { } from "../../server-actions/cart.action"
 
 const products = [
   {

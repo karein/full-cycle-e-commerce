@@ -87,7 +87,7 @@ Libs:
 
 DTO -> Data Transfer Object
 
-Modelagem `anêmica` e `rica`
+Modelagem `anêmica` e `rica`  
 rica: joga as regras de negocio que não dependem do bando, para dentro da própria entidade;
 
 RabbitMQ
@@ -176,20 +176,20 @@ Arquitetura geral do sistema
     |        Next.js        |            |        Nest.js       | <-consome mensagens<- |   RabbitMQ  |
     | Backend for Front-end |  <-http->  |       (Backend)      |                       |             |
     |     Front da loja     |            | API - Ordem de pedido| ->publica mensagens-> | (Messaging) |
-                ⬆                                                                         ⬇         ⬆
-               http                                                             consome mensagens  publica mensagens
-                ⬇                                                                         ⬇         ⬆
+               ⬆                                                                         ⬇         ⬆
+              http                                                             consome mensagens  publica mensagens
+               ⬇                                                                         ⬇         ⬆
         |    Golang     |                                                             |      Golang      |
         |   (backend)   |                                                             |     (backend)    |
         |API do Catálogo|                                                             | API - Pagamentos |
 
-Se a aplicação **Go** foi clonada/replicada na máquina, tem um volume configurado mo mySql. Rodar os seguintes comandos
+- GoLang
+  Se a aplicação **Go** foi clonada/replicada na máquina, tem um volume configurado mo mySql. Rodar os seguintes comandos
 
-- Para destruir o banco de dados:
-  > sudo rm -rf ./.docker/mysql
-- Para destruir o container:
-
-  > docker compose down
+  - Para destruir o banco de dados:
+    > sudo rm -rf ./.docker/mysql
+  - Para destruir o container:
+    > docker compose down
 
 - Next  
   Um componente server pode devolver um `Promise` pois, está devolvendo uma 'promessa' com o elemento que vai ser renderizado.

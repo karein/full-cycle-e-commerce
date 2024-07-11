@@ -7,11 +7,12 @@ import {
   TableRow,
   Typography
 } from "@mui/material"
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import CheckIcon from "@mui/icons-material/Check";
 import PaidIcon from "@mui/icons-material/Paid";
-import { Order, OrderStatus } from "@/models";
+import CheckIcon from "@mui/icons-material/Check";
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+
 import { Total } from "@/components/Total";
+import { Order, OrderStatus } from "@/models";
 
 const order: Order = {
   id: "1",

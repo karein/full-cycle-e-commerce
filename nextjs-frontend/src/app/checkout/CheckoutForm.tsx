@@ -1,8 +1,9 @@
 "use client";
 
-import { Box, Button, TextField } from "@mui/material"
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import PaidIcon from "@mui/icons-material/Paid";
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import { Box, Button, TextField } from "@mui/material";
+
 // import { Form } from "../../components/Form";
 
 export function CheckoutForm() {

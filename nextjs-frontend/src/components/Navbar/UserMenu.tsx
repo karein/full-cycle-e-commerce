@@ -1,15 +1,15 @@
 "use client"
 
+import { IconButton, Menu, MenuItem, Typography } from "@mui/material"
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
+import Link from "next/link"
 import {
   AccountCircle as AccountCircleIcon,
   ListAlt as ListAltIcon,
   Logout as LogoutIcon,
 } from "@mui/icons-material"
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
-import { IconButton, Menu, MenuItem, Typography } from "@mui/material"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { useState } from "react"
 
 export type UserMenuProps = {
   user: any | null
@@ -29,6 +29,7 @@ export function UserMenu(props: UserMenuProps) {
   }
 
   const redirectToMyOrders = () => {
+
     handleClose()
     router.push("/my-orders")
   }
