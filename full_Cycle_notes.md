@@ -205,12 +205,22 @@ Arquitetura geral do sistema
   });
   ```
 
+  `revalidate on demand`: nessa revalidação, o cache fica infinito até que um novo produto seja cadastrado.
+
   Toda página do **Next** se recebe um params e um searchParams
 
   - params: parâmetros de rotas
   - searchParams: string passadas na URL. (`?key=value`)
 
   Se a chamada http for feita em um arquivo 'client', ela vai ser feita no browse. Se quer diminuir ao máximo js sendo executado no browser. Se for feita fora de um 'client' a chamada será executada no servidor.
+
+  Ao usar uma API do próprio next, temos 2 níveis de cache
+
+      - cache do fetch para a api catálogo (Wesley)
+      - cache do fetch para a própria api do Next
+        - Se o valor do revalidate for um pouco maior, ele não vai fazer a chamada pra api própria e já vai retornar os dados. Então já se consegue fazer o cache da busca, forçando para que ela não seja re-executada. Dessa forma não tem necessidade de fazer o `data.filter` todo o tempo
+
+  - Server Action: Ações do lado do servidor funcionam tanto em componente server quanto client. E funciona quando se tem um formulário. Porém, para usar um server action em um client component, a action tem que estar em um arquivo separado
 
 # Comandos
 
@@ -233,6 +243,8 @@ Arquitetura geral do sistema
   - Select:
     > select \* from categories;  
     > select \* from products;
+  - Update:
+    > update products set name = "<New_name>" where id = "<product_id >"
   - Rodar Go: (run project)
     > go run ./cmd/catalog/main.go
 

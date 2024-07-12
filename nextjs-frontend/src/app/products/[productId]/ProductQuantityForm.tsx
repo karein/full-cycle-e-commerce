@@ -15,6 +15,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
 
 import { Total } from "../../../components/Total";
+import { addToCartAction } from "@/server-actions/cart.action";
 // import { addToCartAction } from "../../../server-actions/cart.action";
 
 const schema = yup
@@ -58,16 +59,7 @@ export function ProductQuantityForm(props: { product: Product }) {
     <Box
       component="form"
       sx={{ p: 1 }}
-    // action={async (formData: FormData) => {
-    //   const isValid = await trigger();
-    //   if (!isValid) {
-    //     return;
-    //   }
-    //   const newFormData = new FormData();
-    //   newFormData.append("quantity", formData.get("quantity") as string);
-    //   newFormData.append("product_id", formData.get("product_id") as string);
-    //   await addTocartAction(newFormData)
-    // }}
+      action={addToCartAction}
     >
       <Box
         sx={{
