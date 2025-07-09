@@ -98,7 +98,7 @@ RabbitMQ
 
 Criar/Gerenciar filas
 
-1. acessar o RabbirtMQ -> http://localhost:15672/#/
+1. acessar o RabbitMQ -> http://localhost:15672/#/
 2. logar com o admin e senha (definidos no arquivo da docker, caso o serviço seja feito por meio deste)
 3. Navegar para a aba `Queues ans Streams`
 4. Na seção `Add a new queue` add um nome no campo `Name`
@@ -166,6 +166,7 @@ Prezar pelo uso do server, pois eles já virão totalmente renderizados e, pági
 \<Box\> -> Uma div mais 'poderosa';
 
 **priority** -> Prioridade para carregar; ajuda em métricas de SO
+➡ ⬅
 
 # Aula 4
 
@@ -205,6 +206,8 @@ Arquitetura geral do sistema
   });
   ```
 
+  <!-- time aula 04 - 01:39:31 -->
+
   `revalidate on demand`: nessa revalidação, o cache fica infinito até que um novo produto seja cadastrado.
 
   Toda página do **Next** se recebe um params e um searchParams
@@ -216,9 +219,9 @@ Arquitetura geral do sistema
 
   Ao usar uma API do próprio next, temos 2 níveis de cache
 
-      - cache do fetch para a api catálogo (Wesley)
-      - cache do fetch para a própria api do Next
-        - Se o valor do revalidate for um pouco maior, ele não vai fazer a chamada pra api própria e já vai retornar os dados. Então já se consegue fazer o cache da busca, forçando para que ela não seja re-executada. Dessa forma não tem necessidade de fazer o `data.filter` todo o tempo
+        - cache do fetch para a api catálogo (Wesley)
+        - cache do fetch para a própria api do Next
+          - Se o valor do revalidate for um pouco maior, ele não vai fazer a chamada pra api própria e já vai retornar os dados. Então já se consegue fazer o cache da busca, forçando para que ela não seja re-executada. Dessa forma não tem necessidade de fazer o `data.filter` todo o tempo
 
   - Server Action: Ações do lado do servidor funcionam tanto em componente server quanto client. E funciona quando se tem um formulário. Porém, para usar um server action em um client component, a action tem que estar em um arquivo separado
 
